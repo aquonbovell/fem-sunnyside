@@ -98,10 +98,10 @@
     background-color: transparent;
 
     &[aria-expanded="false"] {
-      background-image: url("/assets/icon-hamburger.svg");
+      background-image: url("./assets/icon-hamburger.svg");
     }
     &[aria-expanded="true"] {
-      background-image: url("/assets/icon-close.svg");
+      background-image: url("./assets/icon-close.svg");
       background-repeat: no-repeat;
       background-position: center center;
     }
