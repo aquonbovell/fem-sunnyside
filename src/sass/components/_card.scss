@@ -1,0 +1,53 @@
+@use "../abstracts/" as *;
+.cards {
+  grid-column: 1/-1;
+  & > * {
+    grid-column: 1/-1;
+    @include mq(small) {
+      & {
+        grid-column: span 6;
+      }
+    }
+  }
+}
+
+.card {
+  height: 36em;
+  padding-block-end: 3em;
+  position: relative;
+  color: clr(text, 700);
+  display: grid;
+  display: grid;
+  grid-template-columns: inherit;
+  align-items: flex-end;
+  @include mq(medium){
+    &{
+      height: 30em;
+    }
+  }
+  &__content {
+    text-align: center;
+    display: grid;
+    grid-template-columns: inherit;
+    grid-column: 1/-1;
+    & > * {
+      grid-column: 2/-2;
+    }
+  }
+  &__title {
+    font-family: $ff-title;
+
+    font-size: fs(400);
+  }
+  &__text {
+    line-height: 1.8;
+  }
+  &__img, & img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+  }
+}

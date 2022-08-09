@@ -1,0 +1,50 @@
+@use "../abstracts/" as *;
+
+.testimonials {
+  padding-block: 4em 6em;
+  row-gap: size(12);
+  & > * {
+    grid-column: 2/-2;
+    text-align: center;
+  }
+  &__title {
+    font-family: $ff-title;
+    color: clr(neutral, 400);
+    text-transform: uppercase;
+    letter-spacing: 0.5ch;
+  }
+  @include mq(medium) {
+    & {
+      column-gap: size(4);
+    }
+    & > *:not(:first-child) {
+      grid-column: span 4;
+    }
+  }
+}
+
+.testimonial {
+  &__img {
+    margin-inline: auto;
+    border-radius: 50%;
+    width: 4em;
+  }
+  &__text {
+    padding-block: size(4);
+    line-height: 1.8;
+    color: clr(neutral, 600);
+  }
+
+  &__credential {
+    display: flex;
+    flex-direction: column;
+    gap: size(1);
+  }
+  &__author {
+    font-family: $ff-title;
+    color: clr(neutral, 800);
+  }
+  &__occupation {
+    color: clr(neutral, 600);
+  }
+}

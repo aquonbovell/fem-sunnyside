@@ -1,0 +1,37 @@
+@use "../abstracts/" as *;
+
+.footer {
+  padding-block: size(10);
+  background-color: lighten(clr(text, 500), 30%);
+  row-gap: size(8);
+  color: clr(text, 700);
+  &__logo {
+    margin: auto;
+    path {
+      fill: clr(text, 700);
+    }
+  }
+  & > * {
+    grid-column: 2/-2;
+  }
+  nav {
+    display: block;
+  }
+  .primary-navigation {
+    display: flex;
+    justify-content: space-around;
+  }
+  & a,& i {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    &:hover, &:focus-within{
+      color: clr(neutral,100);
+    }
+  }
+}
+.social-links {
+  display: flex;
+  column-gap: size(6);
+  justify-content: center;
+}

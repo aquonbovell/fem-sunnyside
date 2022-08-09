@@ -1,0 +1,109 @@
+@use "../abstracts" as *;
+.header {
+  padding-block: size(4);
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  &__menu {
+    grid-column: -3;
+    @include mq(medium) {
+      & {
+        display: none;
+      }
+    }
+  }
+  & > * {
+    grid-row: 1;
+  }
+  nav {
+    clip-path: circle(0% at 100% 0);
+    background-color: clr(neutral, 100);
+    position: absolute;
+    height: 15vh;
+    inset: 130% 0 0 auto;
+    display: block;
+    width: 100%;
+    height: fit-content;
+    z-index: 1000;
+    transition: clip-path 350ms ease-in-out;
+    .primary-navigation {
+      padding-block: 1.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5em;
+      justify-content: space-around;
+      color: clr(neutral, 400);
+      & li:last-child a {
+        padding: 0.75em 1em;
+        border-radius: 2rem;
+        background-color: clr(primary, yellow);
+        font-family: $ff-title;
+        text-transform: uppercase;
+        color: inherit; font-size: 16px;
+        text-decoration: none;
+        color: clr(neutral, 800);
+      }
+      & a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+    &::after {
+      content: "";
+      inset: -8% 0 0 auto;
+      position: absolute;
+      width: size(4);
+      height: size(4);
+      background: inherit;
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    }
+    @include mq(medium) {
+      & {
+        grid-column: 6/-2;
+        display: block;
+        grid-row: 1;
+        padding-right: 2em;
+        position: static;
+        background-color: transparent;
+        inset: unset;
+        height: fit-content;
+        clip-path: none;
+        
+        .primary-navigation {
+          flex-direction: row;
+          padding-block: 0;color: clr(neutral,100);
+          & li:last-child a {
+            padding: 0.75em 1em;
+            color:inherit;
+            font-size: 16px;color: clr(text,750);
+            background: clr(neutral,100);
+            &:hover{
+              background-color: #6ED0FD;
+              color: clr(neutral,100);
+            }
+          }
+        }
+      }
+    }
+    &.open {
+      clip-path: circle(150% at 100% 0);
+    }
+  }
+  .mobile-primary-navigation-toggle {
+    width: size(4);
+    height: 1em;
+    border: 0;
+    justify-self: end;
+    background-color: transparent;
+
+    &[aria-expanded="false"] {
+      background-image: url("/assets/icon-hamburger.svg");
+    }
+    &[aria-expanded="true"] {
+      background-image: url("/assets/icon-close.svg");
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+}

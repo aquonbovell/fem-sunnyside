@@ -1,0 +1,91 @@
+@use "../abstracts/" as *;
+
+.learn-more {
+  grid-column: 1/-1;
+  & > * {
+    grid-column: 1/-1;
+    @include mq(medium) {
+      & {
+        grid-column: span 6;
+        &:first-child {
+          grid-column: 7/-1;
+        }
+        &:nth-child(2) {
+          grid-row: 1;
+        }
+      }
+    }
+  }
+  &__img, & img {
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  &__content {
+    align-self: center;
+    margin-block: 3em;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: inherit;
+    row-gap: size(4);
+    text-align: center;
+    & > * {
+      grid-column: 2/-2;
+    }
+    @include mq(medium) {
+      & {
+        text-align: left;
+        & > * {
+          grid-column: 4/-3;
+        }
+      }
+    }
+  }
+  &__title {
+    line-height: 1;
+    font-family: $ff-title;
+    font-size: fs(600);
+    color: clr(neutral, 800);
+  }
+  &__text {
+    color: clr(neutral, 600);
+    line-height: 1.8;
+  }
+  &__btn {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: $ff-btn;
+    color: clr(neutral, 800);
+    position: relative;
+    height: min-content;
+    margin-inline: auto;
+    width: fit-content;
+    @include mq(medium) {
+      & {
+        margin-inline: unset;
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      margin-inline: auto;
+      width: 110%;
+      height: 0.8rem;
+      border-radius: size(6);
+      z-index: -1;
+      transform: translateX(-5%);
+    }
+    &[data-id="2"]::after {
+      $accent: hsl(7, 99%, 70%);
+      background-color: lighten($color: $accent, $amount: 20%);
+    }
+    &[data-id="1"]::after {
+      $accent: hsl(51, 100%, 49%);
+      background-color: lighten($color: $accent, $amount: 20%);
+    }
+    &:hover::after {
+      background-color: var(--accent);
+    }
+  }
+}

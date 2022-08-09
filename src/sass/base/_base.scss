@@ -1,0 +1,35 @@
+@use "../abstracts" as *;
+
+body {
+  --columns: 10;
+  display: grid;
+  grid-template-columns:
+    1rem
+    repeat(var(--columns), minmax(0, 10rem))
+    1rem;
+  font-family: $ff-body;
+  font-size: fs(100);
+  position: relative;
+}
+
+body > * {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+body > * > * {
+  display: grid;
+  grid-template-columns: inherit;
+  grid-column: 2/-2;
+}
+
+.bg-img,.bg-img img {
+  grid-column: 1/-1;
+  height: 29.3em;
+  width: 100%;
+  object-position: bottom;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+}
